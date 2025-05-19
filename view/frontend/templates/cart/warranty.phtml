@@ -1,0 +1,134 @@
+<!-- 
+/**
+ * Template para a tela de seleção de garantia estendida
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<div class="extended-warranty-selection">
+    <div class="page-title-wrapper">
+        <h1 class="page-title">
+            <span class="base"><?= $block->escapeHtml(__('Selecionar Garantia Estendida')) ?></span>
+        </h1>
+    </div>
+    
+    <div class="product-info-main">
+        <?php $product = $block->getProduct(); ?>
+        <?php if ($product): ?>
+            <div class="product-info-price">
+                <div class="product-info-stock-sku">
+                    <div class="product attribute sku">
+                        <strong class="type"><?= $block->escapeHtml(__('SKU')) ?>: </strong>
+                        <div class="value"><?= $block->escapeHtml($product->getSku()) ?></div>
+                    </div>
+                </div>
+                <div class="price-box price-final_price">
+                    <span class="price-container price-final_price tax weee">
+                        <span class="price-wrapper">
+                            <span class="price"><?= $block->escapeHtml($block->formatPrice($product->getFinalPrice())) ?></span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="product attribute name">
+                <h2><?= $block->escapeHtml($product->getName()) ?></h2>
+            </div>
+            <div class="product attribute description">
+                <div class="value"><?= $block->getChildHtml('product.info.details') ?></div>
+            </div>
+        <?php endif; ?>
+    </div>
+    
+    <div class="warranty-options">
+        <h3><?= $block->escapeHtml(__('Opções de Garantia Estendida')) ?></h3>
+        <p><?= $block->escapeHtml(__('Selecione uma opção de garantia estendida para seu produto ou continue sem garantia.')) ?></p>
+        
+        <form action="<?= $block->escapeUrl($block->getAddWarrantyUrl()) ?>" method="post" id="warranty-form">
+            <?= $block->getBlockHtml('formkey') ?>
+            <input type="hidden" name="item_id" value="<?= $block->escapeHtmlAttr($block->getItemId()) ?>">
+            
+            <div class="warranty-options-list">
+                <?php $warrantyOptions = $block->getWarrantyOptions(); ?>
+                <?php if ($warrantyOptions && $warrantyOptions->getSize() > 0): ?>
+                    <div class="field choice">
+                        <input type="radio" name="warranty_id" id="no-warranty" value="" checked="checked" class="radio">
+                        <label for="no-warranty" class="label">
+                            <span><?= $block->escapeHtml(__('Sem garantia estendida')) ?></span>
+                        </label>
+                    </div>
+                    
+                    <?php foreach ($warrantyOptions as $warranty): ?>
+                        <div class="field choice">
+                            <input type="radio" name="warranty_id" id="warranty-<?= $block->escapeHtmlAttr($warranty->getId()) ?>" value="<?= $block->escapeHtmlAttr($warranty->getId()) ?>" class="radio">
+                            <label for="warranty-<?= $block->escapeHtmlAttr($warranty->getId()) ?>" class="label">
+                                <span><?= $block->escapeHtml($warranty->getWarrantyName()) ?></span>
+                                <span class="price">
+                                    <?php if ($warranty->getCalculationType() == 'fixed'): ?>
+                                        <?= $block->escapeHtml($block->formatPrice($warranty->getWarrantyValue())) ?>
+                                    <?php else: ?>
+                                        <?= $block->escapeHtml($warranty->getWarrantyValue()) ?>% 
+                                        (<?= $block->escapeHtml($block->formatPrice($block->calculateWarrantyValue($warranty))) ?>)
+                                    <?php endif; ?>
+                                </span>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="message info empty">
+                        <div><?= $block->escapeHtml(__('Não há opções de garantia estendida disponíveis para este produto.')) ?></div>
+                    </div>
+                <?php endif; ?>
+            </div>
+            
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action primary tocart" title="<?= $block->escapeHtmlAttr(__('Continuar')) ?>">
+                        <span><?= $block->escapeHtml(__('Continuar')) ?></span>
+                    </button>
+                </div>
+                <div class="secondary">
+                    <a href="<?= $block->escapeUrl($block->getContinueWithoutWarrantyUrl()) ?>" class="action secondary">
+                        <span><?= $block->escapeHtml(__('Voltar ao Carrinho')) ?></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .extended-warranty-selection {
+        margin-bottom: 30px;
+    }
+    .warranty-options {
+        margin-top: 20px;
+        padding: 20px;
+        background: #f8f8f8;
+        border-radius: 5px;
+    }
+    .warranty-options-list {
+        margin: 20px 0;
+    }
+    .warranty-options-list .field.choice {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #e8e8e8;
+        border-radius: 3px;
+        background: #fff;
+    }
+    .warranty-options-list .field.choice:hover {
+        background: #f5f5f5;
+    }
+    .warranty-options-list .price {
+        font-weight: bold;
+        float: right;
+    }
+    .actions-toolbar {
+        margin-top: 20px;
+    }
+    .actions-toolbar .secondary {
+        margin-top: 10px;
+    }
+</style>

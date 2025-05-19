@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuração de menu para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="BizCommerce_ExtendedWarranty::warranty" title="Garantia Estendida" translate="title" module="BizCommerce_ExtendedWarranty" sortOrder="100" parent="Magento_Reports::report" resource="BizCommerce_ExtendedWarranty::warranty"/>
+        <add id="BizCommerce_ExtendedWarranty::warranty_report" title="Relatório de Garantias" translate="title" module="BizCommerce_ExtendedWarranty" sortOrder="10" parent="BizCommerce_ExtendedWarranty::warranty" action="extendedwarranty/report" resource="BizCommerce_ExtendedWarranty::reports"/>
+    </menu>
+</config>

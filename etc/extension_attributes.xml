@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuração de extensão de atributos para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Sales\Api\Data\OrderItemInterface">
+        <attribute code="extended_warranty" type="BizCommerce\ExtendedWarranty\Api\Data\OrderItemWarrantyInterface" />
+    </extension_attributes>
+</config>

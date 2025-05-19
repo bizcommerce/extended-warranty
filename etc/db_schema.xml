@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Esquema de banco de dados para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="bizcommerce_extended_warranty" resource="default" engine="innodb" comment="Tabela de Garantias Estendidas">
+        <column xsi:type="int" name="warranty_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="ID da Garantia"/>
+        <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" 
+                comment="ID do Produto"/>
+        <column xsi:type="varchar" name="warranty_name" nullable="false" length="255" 
+                comment="Nome da Garantia"/>
+        <column xsi:type="varchar" name="calculation_type" nullable="false" length="10" default="fixed"
+                comment="Tipo de Cálculo (fixed ou percent)"/>
+        <column xsi:type="decimal" name="warranty_value" scale="4" precision="12" unsigned="false" nullable="false"
+                comment="Valor da Garantia"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Data de Criação"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Data de Atualização"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="warranty_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="BIZCOMMERCE_EXTENDED_WARRANTY_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID"
+                    table="bizcommerce_extended_warranty" column="product_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+        <index referenceId="BIZCOMMERCE_EXTENDED_WARRANTY_PRODUCT_ID" indexType="btree">
+            <column name="product_id"/>
+        </index>
+    </table>
+    <table name="sales_order_item_extended_warranty" resource="default" engine="innodb" comment="Garantias Estendidas em Pedidos">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="ID da Entidade"/>
+        <column xsi:type="int" name="order_item_id" padding="10" unsigned="true" nullable="false"
+                comment="ID do Item do Pedido"/>
+        <column xsi:type="int" name="warranty_id" padding="10" unsigned="true" nullable="true"
+                comment="ID da Garantia"/>
+        <column xsi:type="varchar" name="warranty_name" nullable="false" length="255"
+                comment="Nome da Garantia"/>
+        <column xsi:type="decimal" name="warranty_value" scale="4" precision="12" unsigned="false" nullable="false"
+                comment="Valor da Garantia"/>
+        <column xsi:type="varchar" name="warranty_time" nullable="false" length="255"
+                comment="Tempo de Garantia"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="SALES_ORDER_ITEM_EXT_WARRANTY_ORDER_ITEM_ID_SALES_ORDER_ITEM_ITEM_ID"
+                    table="sales_order_item_extended_warranty" column="order_item_id" referenceTable="sales_order_item"
+                    referenceColumn="item_id" onDelete="CASCADE"/>
+        <index referenceId="SALES_ORDER_ITEM_EXTENDED_WARRANTY_ORDER_ITEM_ID" indexType="btree">
+            <column name="order_item_id"/>
+        </index>
+    </table>
+</schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuração de rotas da API REST para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/extended-warranty/product/:productId/warranty" method="POST">
+        <service class="BizCommerce\ExtendedWarranty\Api\WarrantyRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Catalog::products"/>
+        </resources>
+    </route>
+    <route url="/V1/extended-warranty/product/:productId/warranty" method="GET">
+        <service class="BizCommerce\ExtendedWarranty\Api\WarrantyRepositoryInterface" method="getListByProductId"/>
+        <resources>
+            <resource ref="Magento_Catalog::products"/>
+        </resources>
+    </route>
+    <route url="/V1/extended-warranty/product/:productId/warranty/:warrantyId" method="PUT">
+        <service class="BizCommerce\ExtendedWarranty\Api\WarrantyRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Catalog::products"/>
+        </resources>
+    </route>
+    <route url="/V1/extended-warranty/product/:productId/warranty/:warrantyId" method="DELETE">
+        <service class="BizCommerce\ExtendedWarranty\Api\WarrantyRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Magento_Catalog::products"/>
+        </resources>
+    </route>
+</routes>

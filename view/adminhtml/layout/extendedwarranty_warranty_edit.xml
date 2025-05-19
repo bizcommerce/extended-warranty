@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Layout para o formulário de edição de garantia estendida
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="BizCommerce\ExtendedWarranty\Block\Adminhtml\Warranty\Edit" name="warranty_edit">
+                <block class="BizCommerce\ExtendedWarranty\Block\Adminhtml\Warranty\Edit\Form" name="warranty_edit_form"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

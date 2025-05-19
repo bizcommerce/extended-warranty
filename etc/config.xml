@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuração de valores padrão para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <extended_warranty>
+            <general>
+                <enabled>1</enabled>
+            </general>
+        </extended_warranty>
+    </default>
+</config>

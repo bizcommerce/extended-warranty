@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuração de dependências para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- API Implementation -->
+    <preference for="BizCommerce\ExtendedWarranty\Api\WarrantyRepositoryInterface" type="BizCommerce\ExtendedWarranty\Model\Api\WarrantyRepository" />
+    <preference for="BizCommerce\ExtendedWarranty\Api\Data\WarrantyInterface" type="BizCommerce\ExtendedWarranty\Model\Warranty" />
+    <preference for="BizCommerce\ExtendedWarranty\Api\Data\WarrantySearchResultsInterface" type="BizCommerce\ExtendedWarranty\Model\WarrantySearchResults" />
+    
+    <!-- Factories -->
+    <preference for="BizCommerce\ExtendedWarranty\Api\Data\WarrantyInterfaceFactory" type="BizCommerce\ExtendedWarranty\Model\Api\WarrantyInterfaceFactory" />
+    <preference for="BizCommerce\ExtendedWarranty\Api\Data\WarrantySearchResultsInterfaceFactory" type="BizCommerce\ExtendedWarranty\Model\Api\WarrantySearchResultsFactory" />
+    
+    <!-- Order Item Warranty -->
+    <preference for="BizCommerce\ExtendedWarranty\Api\Data\OrderItemWarrantyInterface" type="BizCommerce\ExtendedWarranty\Model\Order\OrderItemWarranty" />
+    
+    <!-- Collection Processor -->
+    <type name="BizCommerce\ExtendedWarranty\Model\Api\WarrantyRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">BizCommerce\ExtendedWarranty\Model\Api\CollectionProcessor</argument>
+        </arguments>
+    </type>
+    
+    <!-- Order Repository Plugin -->
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="bizcommerce_extendedwarranty_order_get" type="BizCommerce\ExtendedWarranty\Plugin\Order\OrderGet" />
+    </type>
+</config>

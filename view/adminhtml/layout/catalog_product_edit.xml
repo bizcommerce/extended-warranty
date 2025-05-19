@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Layout para adicionar a aba de garantia estendida no formulário de produto
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product_form">
+            <block class="BizCommerce\ExtendedWarranty\Block\Adminhtml\Catalog\Product\Edit\Tab\Warranty" name="extended_warranty_section">
+                <arguments>
+                    <argument name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Garantia Estendida</item>
+                        <item name="collapsible" xsi:type="boolean">true</item>
+                        <item name="opened" xsi:type="boolean">false</item>
+                        <item name="sortOrder" xsi:type="string">100</item>
+                        <item name="canShow" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">fieldset</item>
+                    </argument>
+                </arguments>
+                <block class="Magento\Backend\Block\Widget\Form\Element\Dependence" name="extended_warranty_enabled_dependence">
+                    <arguments>
+                        <argument name="config" xsi:type="array">
+                            <item name="form" xsi:type="string">product_form</item>
+                            <item name="configOptions" xsi:type="array">
+                                <item name="childFieldPrefix" xsi:type="string">product</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

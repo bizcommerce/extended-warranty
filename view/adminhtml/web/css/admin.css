@@ -1,0 +1,26 @@
+.bizcommerce-extended-warranty-info {
+    background: #f8f8f8;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+.bizcommerce-extended-warranty-info h3 {
+    color: #0a0a0a;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.bizcommerce-extended-warranty-info p {
+    margin: 5px 0;
+}
+
+.bizcommerce-extended-warranty-info .version {
+    background: #efefef;
+    border-radius: 3px;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 5px 10px;
+}

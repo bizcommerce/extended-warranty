@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Layout para o grid de garantias estendidas
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="BizCommerce\ExtendedWarranty\Block\Adminhtml\Catalog\Product\Edit\Tab\Warranty" name="warranty_grid" template="BizCommerce_ExtendedWarranty::warranty/grid.phtml">
+                <block class="Magento\Backend\Block\Widget\Button" name="add_warranty_button">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Adicionar Garantia</argument>
+                        <argument name="onclick" xsi:type="string">setLocation(jQuery('#add_warranty_button').data('url'))</argument>
+                        <argument name="class" xsi:type="string">action-primary</argument>
+                        <argument name="id" xsi:type="string">add_warranty_button</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

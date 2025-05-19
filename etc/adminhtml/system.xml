@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuração do sistema para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bizcommerce" translate="label" sortOrder="200">
+            <label>BizCommerce</label>
+        </tab>
+        <section id="extended_warranty" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Garantia Estendida</label>
+            <tab>bizcommerce</tab>
+            <resource>BizCommerce_ExtendedWarranty::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configurações Gerais</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitar Módulo</label>
+                    <comment>Habilita ou desabilita o módulo de garantia estendida globalmente</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

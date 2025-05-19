@@ -1,0 +1,41 @@
+<!-- 
+/**
+ * Template para o relatório de garantias estendidas
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<div class="warranty-report">
+    <div class="admin__data-grid-header">
+        <div class="admin__data-grid-header-row">
+            <div class="admin__data-grid-actions-wrap">
+                <div class="actions-split">
+                    <button id="export_csv" class="action-secondary" type="button" onclick="setLocation('<?= $block->getExportCsvUrl() ?>')">
+                        <span><?= $block->escapeHtml(__('Exportar CSV')) ?></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="admin__data-grid-wrap">
+        <?= $block->getChildHtml('grid') ?>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'mage/backend/form'
+    ], function($) {
+        'use strict';
+        
+        function filterFormSubmit() {
+            $('#warrantyReportGrid_filter_form').submit();
+        }
+        
+        window.filterFormSubmit = filterFormSubmit;
+    });
+</script>

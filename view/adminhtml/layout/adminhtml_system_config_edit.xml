@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Template para informações do módulo no painel administrativo
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="BizCommerce_ExtendedWarranty::css/admin.css"/>
+    </head>
+</page>

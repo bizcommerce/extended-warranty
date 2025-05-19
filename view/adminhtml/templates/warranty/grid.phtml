@@ -1,0 +1,80 @@
+<!-- 
+/**
+ * Template para o grid de garantias estendidas
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<div class="extended-warranty-grid">
+    <div class="admin__data-grid-header">
+        <div class="admin__data-grid-header-row">
+            <div class="admin__data-grid-actions-wrap">
+                <div class="actions-split">
+                    <?php echo $block->getChildHtml('add_warranty_button'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="admin__data-grid-wrap">
+        <?php if ($block->getCollection() && $block->getCollection()->getSize()): ?>
+            <table class="data-grid">
+                <thead>
+                    <tr>
+                        <?php foreach ($block->getColumns() as $columnId => $column): ?>
+                            <th class="data-grid-th <?= $column['header_css_class'] ?? '' ?>">
+                                <span><?= $block->escapeHtml(__($column['header'])) ?></span>
+                            </th>
+                        <?php endforeach; ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($block->getCollection() as $item): ?>
+                        <tr>
+                            <?php foreach ($block->getColumns() as $columnId => $column): ?>
+                                <td class="<?= $column['column_css_class'] ?? '' ?>">
+                                    <?php if ($columnId === 'action'): ?>
+                                        <?php foreach ($column['actions'] as $action): ?>
+                                            <a href="<?= $block->getUrl($action['url']['base'], array_merge($action['url']['params'], [$action['field'] => $item->getId()])) ?>"
+                                               <?php if (isset($action['confirm'])): ?>
+                                                   data-confirm="<?= $block->escapeHtml(__($action['confirm']['message'])) ?>"
+                                                   data-confirm-title="<?= $block->escapeHtml(__($action['confirm']['title'])) ?>"
+                                               <?php endif; ?>
+                                               class="action-<?= $block->escapeHtmlAttr(strtolower($action['caption'])) ?>">
+                                                <?= $block->escapeHtml(__($action['caption'])) ?>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    <?php elseif ($columnId === 'calculation_type'): ?>
+                                        <?= $block->escapeHtml($block->calculationType->toArray()[$item->getData($columnId)] ?? $item->getData($columnId)) ?>
+                                    <?php elseif ($columnId === 'warranty_value'): ?>
+                                        <?= $block->escapeHtml($block->formatPrice($item->getData($columnId))) ?>
+                                    <?php else: ?>
+                                        <?= $block->escapeHtml($item->getData($columnId)) ?>
+                                    <?php endif; ?>
+                                </td>
+                            <?php endforeach; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <div class="admin__data-grid-empty-row">
+                <div class="empty-data-message">
+                    <span><?= $block->escapeHtml(__('Nenhuma garantia estendida encontrada para este produto.')) ?></span>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery'
+    ], function($) {
+        'use strict';
+        
+        $('#add_warranty_button').data('url', '<?= $block->getAddWarrantyUrl() ?>');
+    });
+</script>

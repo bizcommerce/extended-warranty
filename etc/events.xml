@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuração de eventos para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_save_after">
+        <observer name="bizcommerce_extendedwarranty_save_order" instance="BizCommerce\ExtendedWarranty\Observer\SaveOrderObserver" />
+    </event>
+</config>

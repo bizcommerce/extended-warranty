@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "f5a7b8c9-d0e1-4f23-a456-789b0c1d2e3f",
+		"name": "BizCommerce ExtendedWarranty API",
+		"description": "Coleção Postman para testar a API REST do módulo de Garantia Estendida para Magento 2.4.x",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticação",
+			"item": [
+				{
+					"name": "Obter Token de Acesso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/rest/V1/integration/admin/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rest",
+								"V1",
+								"integration",
+								"admin",
+								"token"
+							]
+						},
+						"description": "Obtém um token de acesso para autenticação na API REST do Magento"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para autenticação na API REST do Magento"
+		},
+		{
+			"name": "Garantias",
+			"item": [
+				{
+					"name": "Listar Garantias de um Produto",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/rest/V1/extended-warranty/product/{{product_id}}/warranty",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rest",
+								"V1",
+								"extended-warranty",
+								"product",
+								"{{product_id}}",
+								"warranty"
+							]
+						},
+						"description": "Retorna todas as opções de garantia estendida disponíveis para um produto específico"
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Detalhes de uma Garantia",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/rest/V1/extended-warranty/warranty/{{warranty_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rest",
+								"V1",
+								"extended-warranty",
+								"warranty",
+								"{{warranty_id}}"
+							]
+						},
+						"description": "Retorna os detalhes de uma garantia estendida específica"
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Nova Garantia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"warranty\": {\n    \"product_id\": {{product_id}},\n    \"warranty_name\": \"Garantia Premium - 2 anos\",\n    \"calculation_type\": \"fixed\",\n    \"warranty_value\": 199.90\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/rest/V1/extended-warranty/product/{{product_id}}/warranty",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rest",
+								"V1",
+								"extended-warranty",
+								"product",
+								"{{product_id}}",
+								"warranty"
+							]
+						},
+						"description": "Cria uma nova opção de garantia estendida para um produto específico"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Garantia Existente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"warranty\": {\n    \"warranty_id\": {{warranty_id}},\n    \"product_id\": {{product_id}},\n    \"warranty_name\": \"Garantia Premium Atualizada - 2 anos\",\n    \"calculation_type\": \"fixed\",\n    \"warranty_value\": 249.90\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/rest/V1/extended-warranty/product/{{product_id}}/warranty/{{warranty_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rest",
+								"V1",
+								"extended-warranty",
+								"product",
+								"{{product_id}}",
+								"warranty",
+								"{{warranty_id}}"
+							]
+						},
+						"description": "Atualiza uma opção de garantia estendida existente"
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Garantia",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/rest/V1/extended-warranty/product/{{product_id}}/warranty/{{warranty_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rest",
+								"V1",
+								"extended-warranty",
+								"product",
+								"{{product_id}}",
+								"warranty",
+								"{{warranty_id}}"
+							]
+						},
+						"description": "Remove uma opção de garantia estendida"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gerenciar garantias estendidas"
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "Verificar Garantias em um Pedido",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/rest/V1/orders/{{order_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rest",
+								"V1",
+								"orders",
+								"{{order_id}}"
+							]
+						},
+						"description": "Retorna os detalhes de um pedido, incluindo as informações de garantia estendida para os itens que possuem garantia"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para verificar garantias em pedidos"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://seu-magento.com",
+			"type": "string",
+			"description": "URL base da sua instalação do Magento"
+		},
+		{
+			"key": "token",
+			"value": "seu_token_aqui",
+			"type": "string",
+			"description": "Token de autenticação obtido via endpoint de autenticação"
+		},
+		{
+			"key": "product_id",
+			"value": "1",
+			"type": "string",
+			"description": "ID do produto para testar as garantias"
+		},
+		{
+			"key": "warranty_id",
+			"value": "1",
+			"type": "string",
+			"description": "ID da garantia para testar operações específicas"
+		},
+		{
+			"key": "order_id",
+			"value": "1",
+			"type": "string",
+			"description": "ID do pedido para verificar garantias"
+		}
+	]
+}

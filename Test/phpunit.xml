@@ -1,0 +1,30 @@
+<?php
+/**
+ * Configuração do PHPUnit para testes do módulo
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/phpunit.xsd"
+         colors="true"
+         bootstrap="./framework/bootstrap.php">
+    <testsuites>
+        <testsuite name="BizCommerce_ExtendedWarranty Unit Tests">
+            <directory suffix="Test.php">../../../app/code/BizCommerce/ExtendedWarranty/Test/Unit</directory>
+        </testsuite>
+        <testsuite name="BizCommerce_ExtendedWarranty Integration Tests">
+            <directory suffix="Test.php">../../../app/code/BizCommerce/ExtendedWarranty/Test/Integration</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../../../app/code/BizCommerce/ExtendedWarranty</directory>
+            <exclude>
+                <directory>../../../app/code/BizCommerce/ExtendedWarranty/Test</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

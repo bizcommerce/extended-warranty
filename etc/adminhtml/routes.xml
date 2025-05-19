@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuração de rotas para o módulo BizCommerce_ExtendedWarranty
+ *
+ * @category  BizCommerce
+ * @package   BizCommerce_ExtendedWarranty
+ * @author    BizCommerce
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="extendedwarranty" frontName="extendedwarranty">
+            <module name="BizCommerce_ExtendedWarranty" />
+        </route>
+    </router>
+</config>
