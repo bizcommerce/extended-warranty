@@ -38,8 +38,8 @@
         "bizcommerce"
     ],
     "support": {
-        "issues": "https://github.com/SEU_USERNAME/ExtendedWarranty/issues",
-        "source": "https://github.com/SEU_USERNAME/ExtendedWarranty"
+        "issues": "https://github.com/bizcommerce/extended-warranty/issues",
+        "source": "https://github.com/bizcommerce/extended-warranty"
     },
     "minimum-stability": "stable"
 }
