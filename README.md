@@ -29,7 +29,7 @@ O módulo BizCommerce_ExtendedWarranty adiciona funcionalidade de garantia esten
 2. Execute os seguintes comandos:
 
 ```bash
-composer require bizcommerce/module-extended-warranty
+composer require bizcommerce/extended-warranty
 bin/magento module:enable BizCommerce_ExtendedWarranty
 bin/magento setup:upgrade
 bin/magento setup:di:compile
