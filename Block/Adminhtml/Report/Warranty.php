@@ -8,7 +8,7 @@
  */
 namespace BizCommerce\ExtendedWarranty\Block\Adminhtml\Report;
 
-use Magento\Backend\Block\Template\Context;
+use Magento\Backend\Block\Widget\Context;
 use Magento\Backend\Block\Widget\Grid\Container;
 
 class Warranty extends Container

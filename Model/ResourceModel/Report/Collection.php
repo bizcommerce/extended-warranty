@@ -15,6 +15,7 @@ use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 
 class Collection extends OrderItemCollection
 {
@@ -25,6 +26,7 @@ class Collection extends OrderItemCollection
      * @param LoggerInterface $logger
      * @param FetchStrategyInterface $fetchStrategy
      * @param ManagerInterface $eventManager
+     * @param Snapshot $entitySnapshot
      * @param AdapterInterface|null $connection
      * @param AbstractDb|null $resource
      */
@@ -33,6 +35,7 @@ class Collection extends OrderItemCollection
         LoggerInterface $logger,
         FetchStrategyInterface $fetchStrategy,
         ManagerInterface $eventManager,
+        Snapshot $entitySnapshot,
         AdapterInterface $connection = null,
         AbstractDb $resource = null
     ) {
@@ -41,6 +44,7 @@ class Collection extends OrderItemCollection
             $logger,
             $fetchStrategy,
             $eventManager,
+            $entitySnapshot,
             $connection,
             $resource
         );
