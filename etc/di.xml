@@ -14,9 +14,7 @@
     <preference for="BizCommerce\ExtendedWarranty\Api\Data\WarrantyInterface" type="BizCommerce\ExtendedWarranty\Model\Warranty" />
     <preference for="BizCommerce\ExtendedWarranty\Api\Data\WarrantySearchResultsInterface" type="BizCommerce\ExtendedWarranty\Model\WarrantySearchResults" />
     
-    <!-- Factories -->
-    <preference for="BizCommerce\ExtendedWarranty\Api\Data\WarrantyInterfaceFactory" type="BizCommerce\ExtendedWarranty\Model\Api\WarrantyInterfaceFactory" />
-    <preference for="BizCommerce\ExtendedWarranty\Api\Data\WarrantySearchResultsInterfaceFactory" type="BizCommerce\ExtendedWarranty\Model\Api\WarrantySearchResultsFactory" />
+
     
     <!-- Order Item Warranty -->
     <preference for="BizCommerce\ExtendedWarranty\Api\Data\OrderItemWarrantyInterface" type="BizCommerce\ExtendedWarranty\Model\Order\OrderItemWarranty" />
